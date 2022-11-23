@@ -5,7 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.*;
@@ -16,19 +16,19 @@ import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  WPI_TalonFX leftMaster;
-  WPI_TalonFX leftFollower;
-  WPI_TalonFX rightMaster;
-  WPI_TalonFX rightFollower;
+  WPI_TalonSRX leftMaster;
+  WPI_TalonSRX leftFollower;
+  WPI_TalonSRX rightMaster;
+  WPI_TalonSRX rightFollower;
   DifferentialDrive drive;
   public DigitalInput limitSwitch;
   
 
   public DriveSubsystem() {
-    leftMaster = new WPI_TalonFX(Constants.leftMasterCANID);
-    leftFollower = new WPI_TalonFX(Constants.leftFollowerCANID);
-    rightMaster = new WPI_TalonFX(Constants.rightMasterCANID);
-    rightFollower = new WPI_TalonFX(Constants.rightFollowerCANID);
+    leftMaster = new WPI_TalonSRX(Constants.leftMasterCANID);
+    leftFollower = new WPI_TalonSRX(Constants.leftFollowerCANID);
+    rightMaster = new WPI_TalonSRX(Constants.rightMasterCANID);
+    rightFollower = new WPI_TalonSRX(Constants.rightFollowerCANID);
     leftMaster.configFactoryDefault();
     leftFollower.configFactoryDefault();
     rightMaster.configFactoryDefault();
@@ -43,12 +43,13 @@ public class DriveSubsystem extends SubsystemBase {
       rightMaster
     );
     leftFollower.follow(leftMaster);
+    leftFollower.setInverted(true);
     rightFollower.follow(rightMaster);
     
   }
 
   public void drive(double left, double right) {
-    drive.tankDrive(left, right);
+    drive.tankDrive(-left, -right);
     System.out.println("left: "+ left+ ", right: "+ right);
   }
 
