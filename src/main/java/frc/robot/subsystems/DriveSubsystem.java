@@ -43,13 +43,12 @@ public class DriveSubsystem extends SubsystemBase {
       rightMaster
     );
     leftFollower.follow(leftMaster);
-    leftFollower.setInverted(true);
     rightFollower.follow(rightMaster);
     
   }
 
   public void drive(double left, double right) {
-    drive.tankDrive(-left, -right);
+    drive.tankDrive(left, -right);
     System.out.println("left: "+ left+ ", right: "+ right);
   }
 
