@@ -9,9 +9,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.GoForwards;
+import frc.robot.subsystems.ConveyorSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.DriveToWall;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -22,6 +23,8 @@ import frc.robot.commands.DriveToWall;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveSubsystem driveSubsystem = new DriveSubsystem();
+
+  private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
 
   private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
   
@@ -69,6 +72,9 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
+      new RunCommand(()-> {conveyorSubsystem.makeSpin(1);}, conveyorSubsystem).withTimeout(2),
+      new RunCommand(()-> {driveSubsystem.drive(.55,.55);}, driveSubsystem) 
+      
     );
   }
 }

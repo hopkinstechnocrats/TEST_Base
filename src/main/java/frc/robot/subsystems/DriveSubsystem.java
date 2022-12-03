@@ -49,7 +49,6 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void drive(double left, double right) {
     drive.tankDrive(left, -right);
-    System.out.println("left: "+ left+ ", right: "+ right);
   }
 
   @Override
