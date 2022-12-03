@@ -25,20 +25,28 @@ public class RobotContainer {
 
   private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
 
-  private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
+  private final XboxController driveController = new XboxController(Constants.DriverControllerPort);
   
-  private final XboxController operatorController = new XboxController(1);
+  private final XboxController operatorController = new XboxController(Constants.OperatorControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
     driveSubsystem.setDefaultCommand(
-            new RunCommand(
-                    () -> {
-                      driveSubsystem.drive(-0.55*driveController.getLeftY(), -0.55*driveController.getRightY());
-                    }
-            , driveSubsystem)
+      new RunCommand(
+        () -> {
+          driveSubsystem.drive(0.55*driveController.getLeftY(), 0.55*driveController.getRightY());
+        }
+        , driveSubsystem)
+    );
+
+    conveyorSubsystem.setDefaultCommand(
+      new RunCommand(
+        () -> {
+          conveyorSubsystem.makeSpin(0);
+        }
+        , conveyorSubsystem)
     );
   
   }
@@ -54,6 +62,9 @@ public class RobotContainer {
     JoystickButton bButton = new JoystickButton(operatorController, 2);
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
+
+    aButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem));
+    bButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(-.4);}, conveyorSubsystem));
   }
    
   
