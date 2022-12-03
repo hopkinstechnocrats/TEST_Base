@@ -5,13 +5,18 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.DriveToWall;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.subsystems.Shooter;
+import edu.wpi.first.wpilibj.Compressor;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,9 +29,9 @@ public class RobotContainer {
   private final DriveSubsystem driveSubsystem = new DriveSubsystem();
 
   private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
-  
+  public final Compressor phCompressor = new Compressor(PneumaticsModuleType.REVPH);
   private final XboxController operatorController = new XboxController(1);
-
+  private final Shooter m_shooter;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -38,7 +43,10 @@ public class RobotContainer {
                     }
             , driveSubsystem)
     );
-  
+    m_shooter = new Shooter();
+    Solenoid obj = new Solenoid(PneumaticsModuleType.REVPH, 0);
+      obj.set(true);
+      phCompressor.enableAnalog(100, 120);
   }
 
   /**
@@ -50,8 +58,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
     JoystickButton aButton = new JoystickButton(operatorController, 1);
     JoystickButton bButton = new JoystickButton(operatorController, 2);
+    JoystickButton xButton = new JoystickButton(operatorController, 3);
+    JoystickButton yButton = new JoystickButton(operatorController, 4);
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
+
+    xButton.whenPressed(new InstantCommand(m_shooter::armOut, m_shooter));
+    yButton.whenPressed(new InstantCommand(m_shooter::armIn, m_shooter));
   }
    
   
