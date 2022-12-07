@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.LiftSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.subsystems.Shooter;
@@ -32,6 +33,7 @@ public class RobotContainer {
   public final Compressor phCompressor = new Compressor(PneumaticsModuleType.REVPH);
   private final XboxController operatorController = new XboxController(1);
   private final Shooter m_shooter;
+  private final LiftSubsystem m_liftSubsystem = new LiftSubsystem();
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -42,6 +44,13 @@ public class RobotContainer {
                       driveSubsystem.drive(-0.55*driveController.getLeftY(), -0.55*driveController.getRightY());
                     }
             , driveSubsystem)
+    );
+    m_liftSubsystem.setDefaultCommand(
+      new RunCommand(
+        () -> {
+         m_liftSubsystem.makeSpin(0);
+        }
+, m_liftSubsystem)
     );
     m_shooter = new Shooter();
     Solenoid obj = new Solenoid(PneumaticsModuleType.REVPH, 0);
@@ -62,7 +71,10 @@ public class RobotContainer {
     JoystickButton yButton = new JoystickButton(operatorController, 4);
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
-
+    
+    
+    aButton.whenPressed(new RunCommand(() -> m_liftSubsystem.makeSpin(1), m_liftSubsystem));
+    bButton.whenPressed(new RunCommand(() -> m_liftSubsystem.makeSpin(1), m_liftSubsystem));
     xButton.whenPressed(new InstantCommand(m_shooter::armOut, m_shooter));
     yButton.whenPressed(new InstantCommand(m_shooter::armIn, m_shooter));
   }
@@ -82,6 +94,9 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
+      new InstantCommand(m_shooter::armOut, m_shooter),
+      new RunCommand(() -> driveSubsystem.drive(1,-1), driveSubsystem).withTimeout(.5),
+      new RunCommand(() -> driveSubsystem.drive(1,1), driveSubsystem)
     );
   }
 }
