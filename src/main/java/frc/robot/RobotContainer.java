@@ -72,8 +72,8 @@ public class RobotContainer {
     
     aButton.whileHeld(new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem));
     bButton.whileHeld(new RunCommand(() -> {m_liftSubsystem.makeSpin(-.5);}, m_liftSubsystem));
-    //xButton.whenPressed(new InstantCommand(() -> m_shooter.armOut(), m_shooter));
-    //yButton.whenPressed(new InstantCommand(() -> m_shooter.armIn(), m_shooter));
+    xButton.whenPressed(new InstantCommand(() -> m_shooter.armOut(), m_shooter));
+    yButton.whenPressed(new InstantCommand(() -> m_shooter.armIn(), m_shooter));
   }
    
   

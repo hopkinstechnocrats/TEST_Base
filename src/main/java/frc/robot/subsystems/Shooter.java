@@ -19,11 +19,11 @@ public class Shooter extends SubsystemBase {
     //what module type
 
     public void armOut(){
-        solenoidIO.set(Value.kForward);
+        solenoidIO.set(true);
     }
 
     public void armIn(){
-        solenoidIO.set(Value.kReverse);
+        solenoidIO.set(false);
     }
 
 }

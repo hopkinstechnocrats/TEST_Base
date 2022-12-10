@@ -1,5 +1,6 @@
 package lib.iotemplates;
 
+import edu.wpi.first.util.datalog.BooleanLogEntry;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -14,13 +15,7 @@ public class SolenoidIOBase implements SolenoidIO {
         currentState = false;
     }
     @Override
-    public void set(Value b) {
-        if(b == Value.kForward && currentState == false) {
-            solenoid.toggle();
-            currentState = true;
-        }else if(b == Value.kReverse && !currentState){
-            solenoid.toggle();
-            currentState = false;
-        }
+    public void set(boolean state) {
+        solenoid.set(state);
     }
 }

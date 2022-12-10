@@ -9,6 +9,6 @@ public interface SolenoidIO {
         public DoubleSolenoid.Value state = DoubleSolenoid.Value.kOff;
     }
 
-    void set(DoubleSolenoid.Value state);
+    void set(boolean state);
 
 }
