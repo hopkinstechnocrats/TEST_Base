@@ -6,6 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -29,8 +31,22 @@ public class RobotContainer {
   
   private final XboxController operatorController = new XboxController(Constants.OperatorControllerPort);
 
+  private final Command spinAuto = new SequentialCommandGroup(
+    new RunCommand(()-> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem).withTimeout(2),
+    new RunCommand(()-> {driveSubsystem.drive(.55,0);}, driveSubsystem).withTimeout(8) 
+  );
+
+  private final Command goGoAuto = new SequentialCommandGroup(
+    new RunCommand(()-> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem).withTimeout(2),
+    new RunCommand(()-> {driveSubsystem.drive(-.55, -.55);}, driveSubsystem).withTimeout(8) 
+  );
+
+  SendableChooser<Command> m_autoChooser = new SendableChooser<>();
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+  m_autoChooser.setDefaultOption("Spin To Hook", spinAuto);
+  m_autoChooser.addOption("Drive Away From Hook", goGoAuto);
     // Configure the button bindings
     configureButtonBindings();
     driveSubsystem.setDefaultCommand(
@@ -49,6 +65,7 @@ public class RobotContainer {
         , conveyorSubsystem)
     );
   
+    SmartDashboard.putData(m_autoChooser);
   }
 
   /**
@@ -63,8 +80,8 @@ public class RobotContainer {
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
 
-    aButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(.6);}, conveyorSubsystem));
-    bButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(-.6);}, conveyorSubsystem));
+    aButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(.7);}, conveyorSubsystem));
+    bButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(-.7);}, conveyorSubsystem));
   }
    
   
@@ -81,11 +98,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new SequentialCommandGroup(
-      new RunCommand(()-> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem).withTimeout(2),
-      new RunCommand(()-> {driveSubsystem.drive(.55,0);}, driveSubsystem).withTimeout(8) 
-      
-    );
+    return m_autoChooser.getSelected();
   }
 }
 
