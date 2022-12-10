@@ -11,11 +11,16 @@ public class SolenoidIOBase implements SolenoidIO {
     boolean currentState;
 
     public SolenoidIOBase(int fwdChannel) {
-        solenoid = new Solenoid(PneumaticsModuleType.REVPH, fwdChannel);
+        solenoid = new Solenoid(PneumaticsModuleType.CTREPCM, fwdChannel);
         currentState = false;
     }
     @Override
     public void set(boolean state) {
         solenoid.set(state);
+    }
+
+    public void pulse(){
+        solenoid.setPulseDuration(2);
+        solenoid.startPulse();
     }
 }

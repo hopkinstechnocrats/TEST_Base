@@ -8,6 +8,7 @@ import frc.robot.Constants;
 import lib.iotemplates.SolenoidIO;
 import lib.iotemplates.SolenoidIOBase;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 
 
 
@@ -15,15 +16,15 @@ import edu.wpi.first.wpilibj.Compressor;
 
 public class Shooter extends SubsystemBase {
     //Find those IDs
-    private final SolenoidIOBase solenoidIO = new SolenoidIOBase(5);
+    private final SolenoidIOBase solenoidIO = new SolenoidIOBase(4);
     //what module type
 
     public void armOut(){
         solenoidIO.set(true);
+
     }
 
     public void armIn(){
         solenoidIO.set(false);
     }
-
 }
