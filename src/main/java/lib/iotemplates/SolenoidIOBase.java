@@ -13,18 +13,12 @@ public class SolenoidIOBase implements SolenoidIO {
         solenoid = new Solenoid(PneumaticsModuleType.REVPH, fwdChannel);
         currentState = false;
     }
-
     @Override
-    public void updateInputs(SolenoidIOInputs inputs) {
-        
-    }
-
-    @Override
-    public void set(DoubleSolenoid.Value state) {
-        if(state == Value.kForward && currentState == false) {
+    public void set(Value b) {
+        if(b == Value.kForward && currentState == false) {
             solenoid.toggle();
             currentState = true;
-        }else if(state == Value.kReverse && !currentState){
+        }else if(b == Value.kReverse && !currentState){
             solenoid.toggle();
             currentState = false;
         }

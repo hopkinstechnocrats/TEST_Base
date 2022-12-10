@@ -31,19 +31,21 @@ public class RobotContainer {
 
   private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
   private final XboxController operatorController = new XboxController(1);
-  private final Shooter m_shooter;
+  private final Shooter m_shooter = new Shooter();
   private final LiftSubsystem m_liftSubsystem = new LiftSubsystem();
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
     driveSubsystem.setDefaultCommand(
             new RunCommand(
                     () -> {
-                      driveSubsystem.drive(-0.55*driveController.getLeftY(), -0.55*driveController.getRightY());
+                      driveSubsystem.drive(0.55*driveController.getRightY(), 0.55*driveController.getLeftY());
                     }
             , driveSubsystem)
     );
+
     m_liftSubsystem.setDefaultCommand(
       new RunCommand(
         () -> {
@@ -51,7 +53,6 @@ public class RobotContainer {
         }
 , m_liftSubsystem)
     );
-    m_shooter = new Shooter();
   }
 
   /**
@@ -61,18 +62,18 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton aButton = new JoystickButton(operatorController, 1);
-    JoystickButton bButton = new JoystickButton(operatorController, 2);
-    JoystickButton xButton = new JoystickButton(operatorController, 3);
-    JoystickButton yButton = new JoystickButton(operatorController, 4);
+    JoystickButton aButton = new JoystickButton(driveController, 1);
+    JoystickButton bButton = new JoystickButton(driveController, 2);
+    JoystickButton xButton = new JoystickButton(driveController, 3);
+    JoystickButton yButton = new JoystickButton(driveController, 4);
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
     
     
-    aButton.whenPressed(new RunCommand(() -> m_liftSubsystem.makeSpin(1), m_liftSubsystem));
-    bButton.whenPressed(new RunCommand(() -> m_liftSubsystem.makeSpin(1), m_liftSubsystem));
-    xButton.whenPressed(new InstantCommand(m_shooter::armOut, m_shooter));
-    yButton.whenPressed(new InstantCommand(m_shooter::armIn, m_shooter));
+    aButton.whileHeld(new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem));
+    bButton.whileHeld(new RunCommand(() -> {m_liftSubsystem.makeSpin(-.5);}, m_liftSubsystem));
+    //xButton.whenPressed(new InstantCommand(() -> m_shooter.armOut(), m_shooter));
+    //yButton.whenPressed(new InstantCommand(() -> m_shooter.armIn(), m_shooter));
   }
    
   
@@ -90,9 +91,9 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
-      new InstantCommand(m_shooter::armOut, m_shooter),
-      new RunCommand(() -> driveSubsystem.drive(1,-1), driveSubsystem).withTimeout(.5),
-      new RunCommand(() -> driveSubsystem.drive(1,1), driveSubsystem)
+      new InstantCommand(() -> m_shooter.armOut(), m_shooter),
+      new RunCommand(() -> {driveSubsystem.drive(1,-1);}, driveSubsystem).withTimeout(.5),
+      new RunCommand(() -> {driveSubsystem.drive(1,1);}, driveSubsystem)
     );
   }
 }
