@@ -98,14 +98,14 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
+      new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem).withTimeout(.6),
 
-      //new ParallelCommandGroup(
-      //  new RunCommand(() -> m_shooter.armOut(), m_shooter),
-      //  new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem)
-      //).withTimeout(.25), 
+      new RunCommand(() -> driveSubsystem.drive(.55,.55), driveSubsystem).withTimeout(4),
+
+      new RunCommand(() -> m_shooter.armOut(), m_shooter).withTimeout(.25)
 
       //new RunCommand(() -> {driveSubsystem.drive(.55,-.55);}, driveSubsystem).withTimeout(.75),
-      new RunCommand(() -> {driveSubsystem.drive(.55,.25);}, driveSubsystem).withTimeout(2)
+      //new RunCommand(() -> {driveSubsystem.drive(.55,.25);}, driveSubsystem).withTimeout(2)
     );
   }
 }
