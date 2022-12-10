@@ -36,7 +36,7 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(
       new RunCommand(
         () -> {
-          driveSubsystem.drive(0.55*driveController.getLeftY(), 0.55*driveController.getRightY());
+          driveSubsystem.drive(0.65*driveController.getLeftY(), 0.65*driveController.getRightY());
         }
         , driveSubsystem)
     );
@@ -63,8 +63,8 @@ public class RobotContainer {
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
 
-    aButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem));
-    bButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(-.4);}, conveyorSubsystem));
+    aButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(.6);}, conveyorSubsystem));
+    bButton.whileHeld(new RunCommand(() -> {conveyorSubsystem.makeSpin(-.6);}, conveyorSubsystem));
   }
    
   
@@ -83,7 +83,7 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
       new RunCommand(()-> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem).withTimeout(2),
-      new RunCommand(()-> {driveSubsystem.drive(.55,.55);}, driveSubsystem) 
+      new RunCommand(()-> {driveSubsystem.drive(.55,-.55);}, driveSubsystem).withTimeout(1) 
       
     );
   }

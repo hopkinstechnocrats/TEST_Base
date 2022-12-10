@@ -19,6 +19,6 @@ public final class Constants {
     public static final int leftFollowerCANID = 10;
     public static final int conveyorMotorCANID = 5;
     public static final int DriverControllerPort = 0;
-    public static final int OperatorControllerPort = 0;
+    public static final int OperatorControllerPort = 1;
 
 }
