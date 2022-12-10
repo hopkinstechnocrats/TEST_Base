@@ -16,6 +16,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.Compressor;
 
@@ -97,8 +98,12 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
-      new InstantCommand(() -> m_shooter.armOut(), m_shooter),
-      new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem).withTimeout(.5),
+
+      //new ParallelCommandGroup(
+      //  new RunCommand(() -> m_shooter.armOut(), m_shooter),
+      //  new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem)
+      //).withTimeout(.25), 
+
       new RunCommand(() -> {driveSubsystem.drive(.55,-.55);}, driveSubsystem).withTimeout(.75),
       new RunCommand(() -> {driveSubsystem.drive(.55,.55);}, driveSubsystem)
     );
