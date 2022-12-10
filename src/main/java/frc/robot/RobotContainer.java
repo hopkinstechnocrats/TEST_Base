@@ -92,7 +92,8 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
       new InstantCommand(() -> m_shooter.armOut(), m_shooter),
-      new RunCommand(() -> {driveSubsystem.drive(1,-1);}, driveSubsystem).withTimeout(.5),
+      new RunCommand(() -> {m_liftSubsystem.makeSpin(.75);}, m_liftSubsystem).withTimeout(.5),
+      new RunCommand(() -> {driveSubsystem.drive(1,-1);}, driveSubsystem).withTimeout(.75),
       new RunCommand(() -> {driveSubsystem.drive(1,1);}, driveSubsystem)
     );
   }
