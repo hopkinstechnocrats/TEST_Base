@@ -14,7 +14,7 @@ import lib.iotemplates.SolenoidIOBase;
 
 public class Shooter extends SubsystemBase {
     //Find those IDs
-    private final SolenoidIOBase solenoidIO = new SolenoidIOBase(6, 7);
+    private final SolenoidIOBase solenoidIO = new SolenoidIOBase(5);
 
 
 

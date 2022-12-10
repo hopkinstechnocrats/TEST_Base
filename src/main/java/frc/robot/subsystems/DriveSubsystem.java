@@ -21,7 +21,6 @@ public class DriveSubsystem extends SubsystemBase {
   WPI_TalonSRX rightMaster;
   WPI_TalonSRX rightFollower;
   DifferentialDrive drive;
-  public DigitalInput limitSwitch;
   
 
   public DriveSubsystem() {

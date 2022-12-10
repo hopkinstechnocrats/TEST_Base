@@ -30,7 +30,6 @@ public class RobotContainer {
   private final DriveSubsystem driveSubsystem = new DriveSubsystem();
 
   private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
-  public final Compressor phCompressor = new Compressor(PneumaticsModuleType.REVPH);
   private final XboxController operatorController = new XboxController(1);
   private final Shooter m_shooter;
   private final LiftSubsystem m_liftSubsystem = new LiftSubsystem();
@@ -53,9 +52,6 @@ public class RobotContainer {
 , m_liftSubsystem)
     );
     m_shooter = new Shooter();
-    Solenoid obj = new Solenoid(PneumaticsModuleType.REVPH, 0);
-      obj.set(true);
-      phCompressor.enableAnalog(100, 120);
   }
 
   /**
