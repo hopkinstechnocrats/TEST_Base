@@ -31,7 +31,7 @@ public class RobotContainer {
 
   private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
   private final XboxController operatorController = new XboxController(1);
-  private final Shooter m_shooter = new Shooter();
+  //private final Shooter m_shooter = new Shooter();
   private final LiftSubsystem m_liftSubsystem = new LiftSubsystem();
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -72,8 +72,8 @@ public class RobotContainer {
     
     aButton.whileHeld(new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem));
     bButton.whileHeld(new RunCommand(() -> {m_liftSubsystem.makeSpin(-.5);}, m_liftSubsystem));
-    xButton.whenPressed(new InstantCommand(() -> m_shooter.armOut(), m_shooter));
-    yButton.whenPressed(new InstantCommand(() -> m_shooter.armIn(), m_shooter));
+    //xButton.whenPressed(new InstantCommand(() -> m_shooter.armOut(), m_shooter));
+    //yButton.whenPressed(new InstantCommand(() -> m_shooter.armIn(), m_shooter));
   }
    
   
@@ -91,7 +91,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
-      new InstantCommand(() -> m_shooter.armOut(), m_shooter),
+      //new InstantCommand(() -> m_shooter.armOut(), m_shooter),
       new RunCommand(() -> {m_liftSubsystem.makeSpin(.5);}, m_liftSubsystem).withTimeout(.5),
       new RunCommand(() -> {driveSubsystem.drive(1,-1);}, driveSubsystem).withTimeout(.75),
       new RunCommand(() -> {driveSubsystem.drive(1,1);}, driveSubsystem)
