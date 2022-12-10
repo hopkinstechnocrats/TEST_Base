@@ -44,7 +44,7 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(
             new RunCommand(
                     () -> {
-                      driveSubsystem.drive(0.65*driveController.getRightY(), 0.65*driveController.getLeftY());
+                      driveSubsystem.drive(0.65*driveController.getRightY(), 0.70*driveController.getLeftY());
                     }
             , driveSubsystem)
     );
