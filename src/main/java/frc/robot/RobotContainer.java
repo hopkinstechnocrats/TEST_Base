@@ -102,9 +102,9 @@ public class RobotContainer {
       new InstantCommand(() -> driveSubsystem.drive(0,0), driveSubsystem),
 
       new RunCommand(() -> driveSubsystem.drive(.55,.55), driveSubsystem).withTimeout(.5),
-      new InstantCommand(() -> driveSubsystem.drive(0,0), driveSubsystem),
+      new InstantCommand(() -> driveSubsystem.drive(0,0), driveSubsystem)//,
 
-      new RunCommand(() -> m_shooter.armOut(), m_shooter).withTimeout(.5)
+      //new RunCommand(() -> m_shooter.armOut(), m_shooter).withTimeout(.5)
 
       //new RunCommand(() -> {driveSubsystem.drive(.55,-.55);}, driveSubsystem).withTimeout(.75),
       //new RunCommand(() -> {driveSubsystem.drive(.55,.25);}, driveSubsystem).withTimeout(2)
