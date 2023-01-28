@@ -14,9 +14,9 @@ package frc.robot;
  */
 public final class Constants {
     public static final int rightMasterCANID = 6;
-    public static final int rightFollowerCANID = 8;
-    public static final int leftMasterCANID = 9;
-    public static final int leftFollowerCANID = 10;
+    public static final int rightFollowerCANID = 5;
+    public static final int leftMasterCANID = 7;
+    public static final int leftFollowerCANID = 8;
     public static final int conveyorMotorCANID = 5;
     public static final int DriverControllerPort = 0;
     public static final int OperatorControllerPort = 1;

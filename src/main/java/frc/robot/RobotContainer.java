@@ -37,8 +37,8 @@ public class RobotContainer {
   );
 
   private final Command goGoAuto = new SequentialCommandGroup(
-    new RunCommand(()-> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem).withTimeout(2),
-    new RunCommand(()-> {driveSubsystem.drive(-.55, -.55);}, driveSubsystem).withTimeout(8) 
+    //new RunCommand(()-> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem).withTimeout(2),
+    new RunCommand(()-> {driveSubsystem.drive(.55, .55);}, driveSubsystem).withTimeout(2) 
   );
 
   SendableChooser<Command> m_autoChooser = new SendableChooser<>();
@@ -52,7 +52,7 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(
       new RunCommand(
         () -> {
-          driveSubsystem.drive(0.7*driveController.getLeftY(), 0.7*driveController.getRightY());
+          driveSubsystem.drive(0.6*driveController.getLeftY(), 0.7*driveController.getRightY());
         }
         , driveSubsystem)
     );
