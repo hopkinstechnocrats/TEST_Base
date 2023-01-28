@@ -33,7 +33,7 @@ public class RobotContainer {
 
   private final Command spinAuto = new SequentialCommandGroup(
     new RunCommand(()-> {conveyorSubsystem.makeSpin(.4);}, conveyorSubsystem).withTimeout(2),
-    new RunCommand(()-> {driveSubsystem.drive(.55,0);}, driveSubsystem).withTimeout(8) 
+    new RunCommand(()-> {driveSubsystem.drive(-.55,0);}, driveSubsystem).withTimeout(8) 
   );
 
   private final Command goGoAuto = new SequentialCommandGroup(
@@ -52,7 +52,7 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(
       new RunCommand(
         () -> {
-          driveSubsystem.drive(0.65*driveController.getLeftY(), 0.65*driveController.getRightY());
+          driveSubsystem.drive(0.7*driveController.getLeftY(), 0.7*driveController.getRightY());
         }
         , driveSubsystem)
     );
