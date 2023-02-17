@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveToWall;
+import frc.robot.subsystems.NEOTestSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -22,6 +23,7 @@ import frc.robot.commands.DriveToWall;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveSubsystem driveSubsystem = new DriveSubsystem();
+  private final NEOTestSubsystem m_NEOTest = new NEOTestSubsystem();
 
   private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
   
@@ -38,6 +40,9 @@ public class RobotContainer {
                     }
             , driveSubsystem)
     );
+    m_NEOTest.setDefaultCommand(
+        new RunCommand(() -> m_NEOTest.SpinNEO(0), m_NEOTest)
+    );
   
   }
 
@@ -52,6 +57,9 @@ public class RobotContainer {
     JoystickButton bButton = new JoystickButton(operatorController, 2);
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
+    JoystickButton YButton = new JoystickButton(driveController, 4);
+
+    YButton.whileHeld(new RunCommand(() -> m_NEOTest.SpinNEO(0.2), m_NEOTest));
   }
    
   
