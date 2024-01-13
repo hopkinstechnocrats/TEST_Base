@@ -34,8 +34,9 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(
             new RunCommand(
                     () -> {
-                      driveSubsystem.drive(Constants.maxMotorOutput*driveController.getLeftY(),
-                       Constants.maxMotorOutput*driveController.getRightY());
+                      /*driveSubsystem.drive(Constants.maxMotorOutput*driveController.getLeftY(),
+                       Constants.maxMotorOutput*driveController.getRightY());*/
+                       driveSubsystem.drive1(10, 10);
                     }
             , driveSubsystem)
     );
@@ -53,6 +54,7 @@ public class RobotContainer {
     JoystickButton bButton = new JoystickButton(operatorController, 2);
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
+    
   }
    
   

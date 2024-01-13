@@ -6,11 +6,14 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+
+import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.PhotonVision;
 
 public class DriveSubsystem extends SubsystemBase {
   // Creating all our variables, we will initialize them and set their values later
@@ -20,7 +23,7 @@ public class DriveSubsystem extends SubsystemBase {
   WPI_TalonFX rightFollower;
   DifferentialDrive drive;
   public DigitalInput limitSwitch;
-  
+  PhotonVision m_PhotonVision = new PhotonVision();
 
   public DriveSubsystem() {
 
@@ -59,6 +62,16 @@ public class DriveSubsystem extends SubsystemBase {
     drive.tankDrive(left, right);
     //readable log printed to roboRIO log accessable from VScode
     System.out.println("left: "+ left+ ", right: "+ right);
+  }
+
+  public void drive1 (double x_target, double y_target){
+    Transform2d Actual_TF = m_PhotonVision.GetCamData();
+    double x_actual = Actual_TF.getX();
+    double y_actual = Actual_TF.getY();
+    double kp_apriltag = 1.0 / 10.0; // 100% power for a 10 inch error
+    double fwdbkwd = (x_actual - x_target) * kp_apriltag;
+    double leftright = (y_actual - y_target);
+    drive.tankDrive(fwdbkwd, leftright);
   }
 
   @Override
