@@ -18,4 +18,6 @@ public final class Constants {
     public static final int leftLeaderCANID = 7;
     public static final int leftFollowerCANID = 8;
     public static final int XboxControllerPort = 0;
+
+    public static final double maxMotorOutput = -0.55;
 }
