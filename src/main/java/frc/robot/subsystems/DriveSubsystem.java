@@ -13,41 +13,51 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  WPI_TalonFX leftMaster;
+  // Creating all our variables, we will initialize them and set their values later
+  WPI_TalonFX leftLeader;
   WPI_TalonFX leftFollower;
-  WPI_TalonFX rightMaster;
+  WPI_TalonFX rightLeader;
   WPI_TalonFX rightFollower;
   DifferentialDrive drive;
   public DigitalInput limitSwitch;
   
 
   public DriveSubsystem() {
-    leftMaster = new WPI_TalonFX(Constants.leftMasterCANID);
+
+    //initialize motor controllers
+    leftLeader = new WPI_TalonFX(Constants.leftLeaderCANID);
     leftFollower = new WPI_TalonFX(Constants.leftFollowerCANID);
-    rightMaster = new WPI_TalonFX(Constants.rightMasterCANID);
+    rightLeader = new WPI_TalonFX(Constants.rightLeaderCANID);
     rightFollower = new WPI_TalonFX(Constants.rightFollowerCANID);
-    leftMaster.configFactoryDefault();
+    leftLeader.configFactoryDefault();
     leftFollower.configFactoryDefault();
-    rightMaster.configFactoryDefault();
+    rightLeader.configFactoryDefault();
     rightFollower.configFactoryDefault();
-    leftMaster.setNeutralMode(NeutralMode.Brake);
-    rightMaster.setNeutralMode(NeutralMode.Brake);
+    //set motors to default to braking
+    leftLeader.setNeutralMode(NeutralMode.Brake);
+    rightLeader.setNeutralMode(NeutralMode.Brake);
     leftFollower.setNeutralMode(NeutralMode.Brake);
     rightFollower.setNeutralMode(NeutralMode.Brake);
 
+    // takes in a value for left speed and right speed, can also change to arcade drive for forward speed and turn
     drive = new DifferentialDrive(
-      leftMaster,
-      rightMaster
+      leftLeader,
+      rightLeader
     );
-    leftFollower.follow(leftMaster);
-    rightFollower.follow(rightMaster);
+
+    //Makes follower motors do the same thing as the leaders so that we don't have to pass arguments for all four
+    leftFollower.follow(leftLeader);
+    rightFollower.follow(rightLeader);
+
+    // inverts left motors from the right motors because they are inverted 180 degrees
     leftFollower.setInverted(true);
+    leftLeader.setInverted(true);
     
   }
 
   public void drive(double left, double right) {
     drive.tankDrive(left, right);
+    //readable log printed to roboRIO log accessable from VScode
     System.out.println("left: "+ left+ ", right: "+ right);
   }
 
