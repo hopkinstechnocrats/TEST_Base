@@ -67,11 +67,17 @@ public class DriveSubsystem extends SubsystemBase {
   public void drive1 (double x_target, double y_target){
     Transform2d Actual_TF = m_PhotonVision.GetCamData();
     double x_actual = Actual_TF.getX();
-    double y_actual = Actual_TF.getY();
-    double kp_apriltag = 1.0 / 10.0; // 100% power for a 10 inch error
-    double fwdbkwd = (x_actual - x_target) * kp_apriltag;
-    double leftright = (y_actual - y_target);
-    drive.tankDrive(fwdbkwd, leftright);
+    //double y_actual = Actual_TF.getY();
+    //double kp_apriltag = 1.0 / 10.0; // 100% power for a 10 inch error
+    //double fwdbkwd = (x_actual - x_target) * kp_apriltag;
+    //double leftright = (y_actual - y_target);
+    if (x_actual>0){
+      drive.tankDrive(x_target, y_target);
+      System.out.println("April Tag Seen");
+    } else {
+      drive.tankDrive(0,0);
+    }
+    
   }
 
   @Override
