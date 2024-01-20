@@ -33,7 +33,7 @@ public class PhotonVision {
             e.printStackTrace();
         }
              //Forward Camera, change name
-        m_cam = new PhotonCamera("Camera_Module_v1");
+        m_cam = new PhotonCamera("Camera_Module_v3");
         Transform3d robotToCam = new Transform3d(new Translation3d(0.5, 0.0, 0.5), new Rotation3d(0,0,0)); //Cam mounted facing forward, half a meter forward of center, half a meter up from center.
 
         // Construct PhotonPoseEstimator
@@ -70,6 +70,8 @@ public class PhotonVision {
             {
                 //Do something!
                 retval = new Transform2d(bestCameraToTarget.getX(),bestCameraToTarget.getY(),Rotation2d.fromRadians(yaw));
+            } else {
+                System.out.println("no april tag seen");
             }
         }
         return retval;
