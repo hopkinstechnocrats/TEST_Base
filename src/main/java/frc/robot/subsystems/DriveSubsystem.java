@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.math.geometry.Transform2d;
+import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -61,19 +62,30 @@ public class DriveSubsystem extends SubsystemBase {
   public void drive(double left, double right) {
     drive.tankDrive(left, right);
     //readable log printed to roboRIO log accessable from VScode
-    System.out.println("left: "+ left+ ", right: "+ right);
+    //System.out.println("left: "+ left+ ", right: "+ right);
   }
 
   public void drive1 (double x_target, double y_target){
-    Transform2d Actual_TF = m_PhotonVision.GetCamData();
+    
+    Transform3d Actual_TF = m_PhotonVision.GetCamData();
     double x_actual = Actual_TF.getX();
-    //double y_actual = Actual_TF.getY();
-    //double kp_apriltag = 1.0 / 10.0; // 100% power for a 10 inch error
-    //double fwdbkwd = (x_actual - x_target) * kp_apriltag;
-    //double leftright = (y_actual - y_target);
+    double y_actual = Actual_TF.getY();
+    double z_actual = Actual_TF.getZ();
+    double fwdbkwd = (x_actual - x_target);
+    double leftright = (y_actual - y_target);
     if (x_actual>0){
-      drive.tankDrive(x_target, y_target);
-      System.out.println("April Tag Seen");
+      drive.tankDrive(-fwdbkwd, -leftright);
+      System.out.println(x_actual);
+      System.out.println(y_actual);
+      System.out.println(z_actual);
+
+      //wait
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        Thread.currentThread().interrupt();
+      }
     } else {
       drive.tankDrive(0,0);
     }
