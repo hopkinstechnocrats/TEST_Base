@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
-  // Constants such as camera and target height stored. Change per robot and goal!
+  /* Constants such as camera and target height stored. Change per robot and goal!
     final double CAMERA_HEIGHT_METERS = Units.inchesToMeters(24);
     final double TARGET_HEIGHT_METERS = Units.feetToMeters(5);
     // Angle between horizontal and the camera.
@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
     // PID constants should be tuned per robot
     final double LINEAR_P = 0.1;
     final double LINEAR_D = 0.0;
-    PIDController forwardController = new PIDController(LINEAR_P, 0, LINEAR_D);
+    PIDController forwardController = new PIDController(LINEAR_P, 0, LINEAR_D); */
   
 
   /**
