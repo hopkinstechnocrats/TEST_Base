@@ -21,55 +21,16 @@ import frc.robot.Constants;
 import frc.robot.PhotonVision;
 
 public class DriveSubsystem extends SubsystemBase {
-<<<<<<< Updated upstream
-  // Creating all our variables, we will initialize them and set their values later
-  WPI_TalonFX leftLeader;
-  WPI_TalonFX leftFollower;
-  WPI_TalonFX rightLeader;
-  WPI_TalonFX rightFollower;
-=======
   /** Creates a new ExampleSubsystem. */
   WPI_TalonSRX leftLeader;
   WPI_TalonSRX leftFollower;
   WPI_TalonSRX rightLeader;
   WPI_TalonSRX rightFollower;
->>>>>>> Stashed changes
   DifferentialDrive drive;
   public DigitalInput limitSwitch;
   PhotonVision m_PhotonVision = new PhotonVision();
 
   public DriveSubsystem() {
-<<<<<<< Updated upstream
-
-    //initialize motor controllers
-    leftLeader = new WPI_TalonFX(Constants.leftLeaderCANID);
-    leftFollower = new WPI_TalonFX(Constants.leftFollowerCANID);
-    rightLeader = new WPI_TalonFX(Constants.rightLeaderCANID);
-    rightFollower = new WPI_TalonFX(Constants.rightFollowerCANID);
-    leftLeader.configFactoryDefault();
-    leftFollower.configFactoryDefault();
-    rightLeader.configFactoryDefault();
-    rightFollower.configFactoryDefault();
-    //set motors to default to braking
-    leftLeader.setNeutralMode(NeutralMode.Brake);
-    rightLeader.setNeutralMode(NeutralMode.Brake);
-    leftFollower.setNeutralMode(NeutralMode.Brake);
-    rightFollower.setNeutralMode(NeutralMode.Brake);
-
-    // takes in a value for left speed and right speed, can also change to arcade drive for forward speed and turn
-    drive = new DifferentialDrive(
-      leftLeader,
-      rightLeader
-    );
-
-    //Makes follower motors do the same thing as the leaders so that we don't have to pass arguments for all four
-    leftFollower.follow(leftLeader);
-    rightFollower.follow(rightLeader);
-
-    // inverts left motors from the right motors because they are inverted 180 degrees
-    leftFollower.setInverted(true);
-    leftLeader.setInverted(true);
-=======
     leftLeader = new WPI_TalonSRX(Constants.leftLeaderCANID);
     leftFollower = new WPI_TalonSRX(Constants.leftFollowerCANID);
     rightLeader = new WPI_TalonSRX(Constants.rightLeaderCANID);
@@ -91,7 +52,6 @@ public class DriveSubsystem extends SubsystemBase {
     leftLeader.setInverted(true);
     leftFollower.setInverted(true);
     
->>>>>>> Stashed changes
     
   }
 
