@@ -5,11 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-<<<<<<< Updated upstream
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-=======
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
->>>>>>> Stashed changes
 
 import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.geometry.Transform3d;
