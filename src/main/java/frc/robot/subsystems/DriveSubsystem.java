@@ -5,7 +5,11 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+<<<<<<< Updated upstream
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+=======
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+>>>>>>> Stashed changes
 
 import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.geometry.Transform3d;
@@ -17,16 +21,25 @@ import frc.robot.Constants;
 import frc.robot.PhotonVision;
 
 public class DriveSubsystem extends SubsystemBase {
+<<<<<<< Updated upstream
   // Creating all our variables, we will initialize them and set their values later
   WPI_TalonFX leftLeader;
   WPI_TalonFX leftFollower;
   WPI_TalonFX rightLeader;
   WPI_TalonFX rightFollower;
+=======
+  /** Creates a new ExampleSubsystem. */
+  WPI_TalonSRX leftLeader;
+  WPI_TalonSRX leftFollower;
+  WPI_TalonSRX rightLeader;
+  WPI_TalonSRX rightFollower;
+>>>>>>> Stashed changes
   DifferentialDrive drive;
   public DigitalInput limitSwitch;
   PhotonVision m_PhotonVision = new PhotonVision();
 
   public DriveSubsystem() {
+<<<<<<< Updated upstream
 
     //initialize motor controllers
     leftLeader = new WPI_TalonFX(Constants.leftLeaderCANID);
@@ -56,6 +69,29 @@ public class DriveSubsystem extends SubsystemBase {
     // inverts left motors from the right motors because they are inverted 180 degrees
     leftFollower.setInverted(true);
     leftLeader.setInverted(true);
+=======
+    leftLeader = new WPI_TalonSRX(Constants.leftLeaderCANID);
+    leftFollower = new WPI_TalonSRX(Constants.leftFollowerCANID);
+    rightLeader = new WPI_TalonSRX(Constants.rightLeaderCANID);
+    rightFollower = new WPI_TalonSRX(Constants.rightFollowerCANID);
+    leftLeader.configFactoryDefault();
+    leftFollower.configFactoryDefault();
+    rightLeader.configFactoryDefault();
+    rightFollower.configFactoryDefault();
+    leftLeader.setNeutralMode(NeutralMode.Brake);
+    rightLeader.setNeutralMode(NeutralMode.Brake);
+    leftFollower.setNeutralMode(NeutralMode.Brake);
+    rightFollower.setNeutralMode(NeutralMode.Brake);
+
+    drive = new DifferentialDrive(leftLeader, rightLeader);
+
+    leftFollower.follow(leftLeader);
+    rightFollower.follow(rightLeader);
+
+    leftLeader.setInverted(true);
+    leftFollower.setInverted(true);
+    
+>>>>>>> Stashed changes
     
   }
 
