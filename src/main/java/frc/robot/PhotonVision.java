@@ -37,8 +37,8 @@ public class PhotonVision {
             e.printStackTrace();
         }
              //Forward Camera, change name
-        m_cam = new PhotonCamera("HD_Pro_Webcam_C920");
-        //n_cam = new PhotonCamera("Camera2");
+        //m_cam = new PhotonCamera("Camera_Module_v3");
+        n_cam = new PhotonCamera("Camera2");
         Transform3d robotToCam = new Transform3d(new Translation3d(0.5, 0.0, 0.5), new Rotation3d(0,0,0)); //Cam mounted facing forward, half a meter forward of center, half a meter up from center.
 
         // Construct PhotonPoseEstimator
@@ -53,7 +53,7 @@ public class PhotonVision {
         Transform3d retval = new Transform3d();
 
         // Query the latest result from PhotonVision
-        var result = m_cam.getLatestResult();
+        var result = n_cam.getLatestResult();
 
         // Check if the latest result has any targets.
         boolean hasTargets = result.hasTargets();
