@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.PhotonVision;
 
 public class DriveSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
@@ -24,7 +23,7 @@ public class DriveSubsystem extends SubsystemBase {
   WPI_TalonSRX rightFollower;
   DifferentialDrive drive;
   public DigitalInput limitSwitch;
-  PhotonVision m_PhotonVision = new PhotonVision();
+  
 
   public DriveSubsystem() {
     leftLeader = new WPI_TalonSRX(Constants.leftLeaderCANID);
@@ -57,32 +56,9 @@ public class DriveSubsystem extends SubsystemBase {
     //System.out.println("left: "+ left+ ", right: "+ right);
   }
 
-  public void drive1 (double x_target, double y_target){
+  
     
-    Transform3d Actual_TF = m_PhotonVision.GetCamData();
-    double x_actual = Actual_TF.getX();
-    double y_actual = Actual_TF.getY();
-    double z_actual = Actual_TF.getZ();
-    double fwdbkwd = (x_actual - x_target);
-    double leftright = (y_actual - y_target);
-    if (x_actual>0){
-      drive.tankDrive(-fwdbkwd, -leftright);
-      System.out.println(x_actual);
-      System.out.println(y_actual);
-      System.out.println(z_actual);
-
-      //wait
-      try {
-        Thread.sleep(1000);
-      } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
-        Thread.currentThread().interrupt();
-      }
-    } else {
-      drive.tankDrive(0,0);
-    }
-    
-  }
+  
 
   @Override
   public void periodic() {

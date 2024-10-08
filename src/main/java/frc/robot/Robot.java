@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import org.photonvision.PhotonCamera;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.util.Units;

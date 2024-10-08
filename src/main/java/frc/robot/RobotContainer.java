@@ -56,7 +56,7 @@ public class RobotContainer {
     JoystickButton aDriverButton = new JoystickButton(driveController, 1);
     JoystickButton bDriverButton = new JoystickButton(driveController, 2);
    //call distance
-    aDriverButton.whileTrue(new RunCommand(() -> driveSubsystem.drive1(1, 0)));
+    
   }
    
   
