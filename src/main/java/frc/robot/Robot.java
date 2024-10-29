@@ -4,13 +4,8 @@
 
 package frc.robot;
 
-import org.photonvision.PhotonCamera;
 
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -24,22 +19,6 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
   // Constants such as camera and target height stored. Change per robot and goal!
-    final double CAMERA_HEIGHT_METERS = Units.inchesToMeters(24);
-    final double TARGET_HEIGHT_METERS = Units.feetToMeters(5);
-    // Angle between horizontal and the camera.
-    final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(0);
-
-    // How far from the target we want to be
-    final double GOAL_RANGE_METERS = Units.feetToMeters(3);
-
-    // Change this to match the name of your camera
-    PhotonCamera camera = new PhotonCamera("photonvision");
-
-    // PID constants should be tuned per robot
-    final double LINEAR_P = 0.1;
-    final double LINEAR_D = 0.0;
-    PIDController forwardController = new PIDController(LINEAR_P, 0, LINEAR_D);
-  
 
   /**
    * This function is run when the robot is first started up and should be used for any
