@@ -13,7 +13,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
+
   // Initialize all the variables so we can use them later
+
   WPI_TalonSRX leftLeader;
   WPI_TalonSRX leftFollower;
   WPI_TalonSRX rightLeader;
@@ -21,6 +23,7 @@ public class DriveSubsystem extends SubsystemBase {
   DifferentialDrive drive;
   public DigitalInput limitSwitch;
   
+
   // DriveSubsystem contains all the code for what we want our DriveSubsystem to be
   public DriveSubsystem() {
     // Create the motors in code
@@ -28,11 +31,13 @@ public class DriveSubsystem extends SubsystemBase {
     leftFollower = new WPI_TalonSRX(Constants.leftFollowerCANID);
     rightLeader = new WPI_TalonSRX(Constants.rightLeaderCANID);
     rightFollower = new WPI_TalonSRX(Constants.rightFollowerCANID);
+    
     // Set motors to default settings
     leftLeader.configFactoryDefault();
     leftFollower.configFactoryDefault();
     rightLeader.configFactoryDefault();
     rightFollower.configFactoryDefault();
+
     // Tell motors to brake when not given any other command
     leftLeader.setNeutralMode(NeutralMode.Brake);
     rightLeader.setNeutralMode(NeutralMode.Brake);
