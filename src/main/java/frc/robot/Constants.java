@@ -13,11 +13,18 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    // The CAN ID is the device ID of each of the motors
     public static final int rightLeaderCANID = 6;
     public static final int rightFollowerCANID = 5;
     public static final int leftLeaderCANID = 7;
     public static final int leftFollowerCANID = 8;
-    public static final int XboxControllerPort = 0;
+    //The controller ports can be changed in driverstation
+    public static final int driverXboxControllerPort = 0;
+    public static final int operatorXboxControllerPort = 1;
 
+    /* 
+    Sets the maximum power we can drive at. 1.0 is 100%. 
+    The number is negative because xbox controllers are down-right positve
+    */
     public static final double maxMotorOutput = -0.55;
 }
