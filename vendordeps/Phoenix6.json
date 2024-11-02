@@ -1,11 +1,7 @@
 {
     "fileName": "Phoenix6.json",
     "name": "CTRE-Phoenix (v6)",
-<<<<<<< Updated upstream
     "version": "24.1.0",
-=======
-    "version": "24.3.0",
->>>>>>> Stashed changes
     "frcYear": 2024,
     "uuid": "e995de00-2c64-4df5-8831-c1441420ff19",
     "mavenUrls": [
@@ -23,22 +19,14 @@
         {
             "groupId": "com.ctre.phoenix6",
             "artifactId": "wpiapi-java",
-<<<<<<< Updated upstream
             "version": "24.1.0"
-=======
-            "version": "24.3.0"
->>>>>>> Stashed changes
         }
     ],
     "jniDependencies": [
         {
             "groupId": "com.ctre.phoenix6",
             "artifactId": "tools",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -51,11 +39,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "tools-sim",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -68,11 +52,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simTalonSRX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -85,11 +65,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simTalonFX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -102,11 +78,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simVictorSPX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -119,11 +91,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simPigeonIMU",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -136,11 +104,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simCANCoder",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -153,11 +117,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simProTalonFX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -170,11 +130,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simProCANcoder",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -187,11 +143,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simProPigeon2",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
@@ -206,11 +158,7 @@
         {
             "groupId": "com.ctre.phoenix6",
             "artifactId": "wpiapi-cpp",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_Phoenix6_WPI",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -225,11 +173,7 @@
         {
             "groupId": "com.ctre.phoenix6",
             "artifactId": "tools",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_PhoenixTools",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -244,11 +188,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "wpiapi-cpp-sim",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_Phoenix6_WPISim",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -263,11 +203,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "tools-sim",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_PhoenixTools_Sim",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -282,11 +218,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simTalonSRX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimTalonSRX",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -301,11 +233,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simTalonFX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimTalonFX",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -320,11 +248,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simVictorSPX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimVictorSPX",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -339,11 +263,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simPigeonIMU",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimPigeonIMU",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -358,11 +278,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simCANCoder",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimCANCoder",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -377,11 +293,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simProTalonFX",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimProTalonFX",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -396,11 +308,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simProCANcoder",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimProCANcoder",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -415,11 +323,7 @@
         {
             "groupId": "com.ctre.phoenix6.sim",
             "artifactId": "simProPigeon2",
-<<<<<<< Updated upstream
             "version": "24.1.0",
-=======
-            "version": "24.3.0",
->>>>>>> Stashed changes
             "libName": "CTRE_SimProPigeon2",
             "headerClassifier": "headers",
             "sharedLibrary": true,
